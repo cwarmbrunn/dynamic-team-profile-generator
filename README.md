@@ -6,7 +6,7 @@ Dynamic Team Profile Generator
 
 **Project Description/Summary:**
 
-Creating a Node.js application that dynamically generates a site after receiving user input via the terminal. Leveraging Jest to run unit tests and Inqurirer to collect input from the user. 
+Creating a Node.js command-line application that dynamically generates an HTML site after receiving user input via the terminal about individual employees. Leveraging Jest to run unit tests and Inqurirer to collect input from the user. 
 
 ---
 
