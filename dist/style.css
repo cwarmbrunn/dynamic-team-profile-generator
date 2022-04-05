@@ -1,0 +1,14 @@
+*{
+font-family:'Open Sans', serif;
+}
+
+header {
+    padding: 25px;
+    z-index:999999;
+    font-size: 2rem;
+}
+
+footer{
+    z-index: 999999;
+    font-size: 2rem;
+}
