@@ -86,7 +86,15 @@ const promptUser = () => {
     .then((userSelection) => {
       // If user selects "Add an Engineer" - run the following
       if (userSelection === "Add an Engineer") {
-        getEngineer();
+        return getEngineer(
+          inquirer.prompt([
+            {
+              type: "input",
+              name: "engineer.name",
+              message: "What's the engineer's name?",
+            },
+          ])
+        );
 
         // Else if user selects "Add an Intern" - run the following
       } else if (userSelection === "Add an Intern") {
@@ -96,12 +104,12 @@ const promptUser = () => {
       } else if (userSelection === "Done with my Team") {
         return endPrompts();
       }
+      // TODO: Create a function to write responses into userResponses.json
+      const endPrompts = promptUser().then((data) => {
+        console.log("Generating a file....");
+        console.log("Done! Check index.html under the dist folder.");
+        return writeFile(data);
+      });
     });
 };
-
-// TODO: Create a function to write responses into userResponses.json
-const endPrompts = promptUser().then((data) => {
-  console.log("Generating a file....");
-  console.log("Done! Check index.html under the dist folder.");
-  return writeFile(data);
-});
+promptUser();
