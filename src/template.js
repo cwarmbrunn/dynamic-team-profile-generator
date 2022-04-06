@@ -2,14 +2,14 @@
 const fs = require("fs");
 
 function generateHTML(data) {
-    // Else statement for if first engineer IS NOT selected
-    if (!data.engineer) {
-      var engineerSelection = ``;
-    }
+  // Else statement for if first engineer IS NOT selected
+  if (!data.engineer) {
+    var engineerSelection = "";
+  }
 
-    // If the first engineer is selected run the following
-    else if (data.engineer) {
-      var engineerSelection = `<div class="col-md-3">
+  // If the first engineer is selected run the following
+  else if (data.engineer) {
+    var engineerSelection = `<div class="col-md-3">
 
     <!-- CARD #2 - ENGINEER -->
     <div class="card mt-4 px-3 d-flex shadow-lg">
@@ -30,7 +30,7 @@ function generateHTML(data) {
   <!-- END CARD #2 - ENGINEER -->
   </div>
   `;
-    }
+  }
 
   //   // If the second engineer is selected run the following
   //   if (data.engineer2) {
