@@ -2,6 +2,115 @@
 const fs = require("fs");
 
 function generateHTML(data) {
+  // If the first engineer is selected run the following
+  if (data.engineer) {
+    var engineerSelection = `<div class="col-md-3">
+    
+  <!-- CARD #2 - ENGINEER -->
+  <div class="card mt-4 px-3 d-flex shadow-lg">
+      <div class="card-header bg-primary text-light">
+          <h3 class="employee-name"> ${data.engineer.name}</h3>
+          <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
+      </div>
+      <div class="card-body shadow">
+          <ul class="list-group list-group-flush shadow">
+              <li class="list-group-item"><i class="fa fa-lock"></i> ID:${data.engineer.id} </li>
+              <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:<a href="mailto:${data.engineer.email}">${data.engineer.email}</a> </li>
+              <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a href="https://github.com/${data.engineer.github} target="_blank">${data.engineer.github} </li>
+              </li>
+          </ul>
+      </div>
+  </div>
+</div>
+<!-- END CARD #2 - ENGINEER -->
+</div>
+`;
+  }
+
+  // Else statement for if first engineer IS NOT selected
+  else {
+    var engineerSelection = ``;
+  }
+
+  //   // If the second engineer is selected run the following
+  //   if (data.engineer2) {
+  //     var engineer2Selection = `<div class="col-md-3">
+
+  //     <!-- CARD #3 - ENGINEER -->
+  //     <div class="card mt-4 px-3 d-flex shadow-lg">
+  //         <div class="card-header bg-primary text-light">
+  //             <h3 class="employee-name"> Alec</h3>
+  //             <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
+  //         </div>
+  //         <div class="card-body shadow">
+  //             <ul class="list-group list-group-flush shadow">
+  //                 <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
+  //                 <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
+  //                 <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: </li>
+  //                 <!--https://github.com/-->
+
+  //                 </li>
+  //             </ul>
+  //         </div>
+  //     </div>
+  //   </div>
+  //   <!-- END CARD #3 - ENGINEER -->
+  //   </div>`;
+
+  //     // If second engineer IS NOT selected
+  //   } else {
+  //     var engineer2Selection = ``;
+  //   }
+
+  //   // If third engineer is selected run the following
+  //   if (data.engineer3) {
+  //     var engineer3Selection = ` <div class="col-md-3">
+  //       <!-- CARD #4 - ENGINEER -->
+  //       <div class="card mt-4 px-3 shadow-lg">
+  //           <div class="card-header bg-primary text-light">
+  //               <h3 class="employee-name"> Tammer </h3>
+  //               <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
+  //           </div>
+  //           <div class="card-body">
+  //               <ul class="list-group list-group-flush shadow">
+  //                   <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
+  //                   <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
+  //                   <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: </li>
+  //               </ul>
+  //           </div>
+  //       </div>
+  //       <!-- END CARD #4 - ENGINEER -->
+  //   </div>`;
+  //     // If third engineer IS NOT selected
+  //   } else {
+  //     var engineer3Selection = ``;
+  //   }
+
+  //   // If intern is selected run the following
+  //   if (data.intern) {
+  //     var internSelection = ` <div class="col-md-3">
+  //       <!-- CARD #5 - INTERN -->
+  //       <div class="card col-md-12 mt-4 px-3 shadow-lg">
+  //           <div class="card-header bg-primary text-light">
+  //               <h3 class="employee-name"> John </h3>
+  //               <h5 class="job-title"><i class="fa fa-mortar-board"></i> Intern </h5>
+  //           </div>
+  //           <div class="card-body">
+  //               <ul class="list-group list-group-flush shadow">
+  //                   <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
+  //                   <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
+  //                   <li class="list-group-item"> <i class="fa fa-apple"></i> School: </li>
+  //               </ul>
+  //           </div>
+  //       </div>
+  //       <!-- END CARD #5 - INTERN -->
+  //   </div>`;
+  //     // If intern is NOT selected
+  //   } else {
+  //     var internSelection = ``;
+  //   }
+
+  // HTML Template Begins
   return ` <!DOCTYPE html>
     <html lang="en">
     
@@ -38,7 +147,7 @@ function generateHTML(data) {
             <div class="row">
                 <div class="col-md-3">
                     <!-- CARD #1 - MANAGER -->
-                    <div class="card mt-4 d-flex shadow-lg">
+                    <div class="card mt-4 px-3 d-flex shadow-lg">
                         <div class="card-header bg-primary text-light">
                             <h3 class="employee-name"> ${data.manager.name}</h3>
                             <h5 class="job-title"><i class="fa fa-coffee"></i> Manager </h5>
@@ -56,81 +165,10 @@ function generateHTML(data) {
                         <!-- END CARD #1 - MANAGER -->
                     </div>
                 </div>
-                <div class="col-md-3">
-    
-                    <!-- CARD #2 - ENGINEER -->
-                    <div class="card mt-4 d-flex shadow-lg">
-                        <div class="card-header bg-primary text-light">
-                            <h3 class="employee-name"> Alec</h3>
-                            <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
-                        </div>
-                        <div class="card-body shadow">
-                            <ul class="list-group list-group-flush shadow">
-                                <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
-                                <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
-                                <!--https://github.com/-->
-    
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- END CARD #2 - ENGINEER -->
-            </div>
-    
-            <div class="row">
-                <div class="col-md-3">
-                    <!-- CARD #3 - ENGINEER -->
-                    <div class="card mt-4 d-flex shadow-lg">
-                        <div class="card-header bg-primary text-light">
-                            <h3 class="employee-name"> Grace </h3>
-                            <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush shadow">
-                                <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
-                                <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
-                                <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- END CARD #3 - ENGINEER -->
-    
-                </div>
-                <div class="col-md-3">
-                    <!-- CARD #4 - ENGINEER -->
-                    <div class="card mt-4 shadow-lg">
-                        <div class="card-header bg-primary text-light">
-                            <h3 class="employee-name"> Tammer </h3>
-                            <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush shadow">
-                                <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
-                                <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
-                                <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- END CARD #4 - ENGINEER -->
-                </div>
-                <div class="col-md-3">
-                    <!-- CARD #5 - INTERN -->
-                    <div class="card col-md-12 mt-4 shadow-lg">
-                        <div class="card-header bg-primary text-light">
-                            <h3 class="employee-name"> John </h3>
-                            <h5 class="job-title"><i class="fa fa-mortar-board"></i> Intern </h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush shadow">
-                                <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
-                                <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
-                                <li class="list-group-item"> <i class="fa fa-apple"></i> School: </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- END CARD #5 - INTERN -->
-                </div>
+               ${engineerSelection}
+
+        
+               
                 <!-- END CARD DECK -->
             </div>
         </div>
@@ -163,3 +201,9 @@ const writeFile = (data) => {
 module.exports = {
   writeFile,
 };
+
+// ${engineer2Selection}
+
+// ${engineer3Selection}
+
+// ${internSelection}
