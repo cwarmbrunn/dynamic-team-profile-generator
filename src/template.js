@@ -2,35 +2,35 @@
 const fs = require("fs");
 
 function generateHTML(data) {
-  // Else statement for if first engineer IS NOT selected
-  if (!data.engineer) {
-    var engineerSelection = "";
-  }
+  //   // Else statement for if first engineer IS NOT selected
+  //   if (!data.engineer.name) {
+  //     var engineerSelection = "";
+  //   }
 
-  // If the first engineer is selected run the following
-  else if (data.engineer) {
-    var engineerSelection = `<div class="col-md-3">
+  //   // If the first engineer is selected run the following
+  //   else if (data.engineer.name) {
+  //     var engineerSelection = `<div class="col-md-3">
 
-    <!-- CARD #2 - ENGINEER -->
-    <div class="card mt-4 px-3 d-flex shadow-lg">
-        <div class="card-header bg-primary text-light">
-            <h3 class="employee-name"> ${data.engineer.name}</h3>
-            <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
-        </div>
-        <div class="card-body shadow">
-            <ul class="list-group list-group-flush shadow">
-                <li class="list-group-item"><i class="fa fa-lock"></i> ID:${data.engineer.id} </li>
-                <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:<a href="mailto:${data.engineer.email}"> ${data.engineer.email}</a> </li>
-                <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a href="https://github.com/${data.engineer.github}" target="_blank"> ${data.engineer.github} </li>
-                </li>
-            </ul>
-        </div>
-    </div>
-  </div>
-  <!-- END CARD #2 - ENGINEER -->
-  </div>
-  `;
-  }
+  //     <!-- CARD #2 - ENGINEER -->
+  //     <div class="card mt-4 px-3 d-flex shadow-lg">
+  //         <div class="card-header bg-primary text-light">
+  //             <h3 class="employee-name"> ${data.engineer.name}</h3>
+  //             <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
+  //         </div>
+  //         <div class="card-body shadow">
+  //             <ul class="list-group list-group-flush shadow">
+  //                 <li class="list-group-item"><i class="fa fa-lock"></i> ID:${data.engineer.id} </li>
+  //                 <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:<a href="mailto:${data.engineer.email}"> ${data.engineer.email}</a> </li>
+  //                 <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a href="https://github.com/${data.engineer.github}" target="_blank"> ${data.engineer.github} </li>
+  //                 </li>
+  //             </ul>
+  //         </div>
+  //     </div>
+  //   </div>
+  //   <!-- END CARD #2 - ENGINEER -->
+  //   </div>
+  //   `;
+  //   }
 
   //   // If the second engineer is selected run the following
   //   if (data.engineer2) {
@@ -165,8 +165,6 @@ function generateHTML(data) {
                         <!-- END CARD #1 - MANAGER -->
                     </div>
                 </div>
-               ${engineerSelection}
-
         
                
                 <!-- END CARD DECK -->

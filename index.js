@@ -230,16 +230,13 @@ const getIntern = () => {
 };
 
 // End prompt is called to generate the data in a file then transitions to template.js
+
 const endPrompt = () => {
-  promptUser().then((data) => {
-    console.log("Generating a file....");
-    console.log("Done! Check index.html under the dist folder.");
-    return writeFile(data);
-  });
+  console.log("Generating a file....");
+  console.log("Done! Check index.html under the dist folder.");
+  return writeFile(data);
 };
 
-5;
-
-promptUser().then((answers) => {
+promptUser().then((data) => {
   createTeam();
 });
