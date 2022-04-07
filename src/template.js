@@ -149,16 +149,16 @@ function generateHTML(data) {
                     <!-- CARD #1 - MANAGER -->
                     <div class="card mt-4 px-3 d-flex shadow-lg">
                         <div class="card-header bg-primary text-light">
-                            <h3 class="employee-name"> ${managerName}</h3>
+                            <h3 class="employee-name"> ${data.managerName}</h3>
                             <h5 class="job-title"><i class="fa fa-coffee"></i> Manager </h5>
                         </div>
                         <div class="card-body shadow">
                             <ul class="list-group list-group-flush shadow ">
-                                <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${managerId}</li>
-                                <li class="list-group-item"><i class="fa fa-envelope-o"></i> Email: <a href="mailto:${managerEmail}">${managerEmail}</a>
+                                <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data.managerId}</li>
+                                <li class="list-group-item"><i class="fa fa-envelope-o"></i> Email: <a href="mailto:${data.managerEmail}">${data.managerEmail}</a>
     
                                 </li>
-                                <li class="list-group-item"><i class="fa fa-map-marker"></i> Office Number: ${managerOffice}</li>
+                                <li class="list-group-item"><i class="fa fa-map-marker"></i> Office Number: ${data.managerOffice}</li>
                             </ul>
                         </div>
     
