@@ -95,7 +95,7 @@ const createTeam = () => {
       } else if (userSelection.nextSteps === "Add an Intern") {
         getIntern();
       } else if (userSelection.nextSteps === "Done with my Team") {
-        endPrompt(userSelection);
+        endPrompt();
       }
     });
 };
