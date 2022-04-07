@@ -232,11 +232,12 @@ const getIntern = () => {
             return false;
           }
         },
-      }.then(
-        console
-          .log("All done with your intern's data - returning to the main page.")
-          .then(createTeam())
-      ),
+      }
+      // .then(
+      //   console
+      //     .log("All done with your intern's data - returning to the main page.")
+      //     .then(createTeam())
+      // ),
     ])
     // Console log user answers
     .then((answers) => {
