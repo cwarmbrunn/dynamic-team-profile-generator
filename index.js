@@ -238,3 +238,8 @@ const endPrompt = () => {
   });
 };
 
+5;
+
+promptUser().then((answers) => {
+  createTeam();
+});
