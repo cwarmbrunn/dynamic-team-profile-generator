@@ -18,7 +18,7 @@ const promptUser = () => {
       // Question #1 - Manager Name
       type: "input",
       name: "manager.name",
-      message: "What is the manager's name?",
+      message: "Enter the manager's name (Required):",
 
       // Validation
       validate: (nameInput) => {
@@ -48,7 +48,7 @@ const promptUser = () => {
     {
       type: "input",
       name: "manager.email",
-      message: "What is the manager's email address?",
+      message: "Enter the manager's email address (Required):",
 
       // Validation
       validate: (nameInput) => {
@@ -76,13 +76,16 @@ const promptUser = () => {
 };
 
 const createTeam = () => {
-  inquirer.prompt([
-    {
-      type: "input",
-      name: "nextSteps",
-      message: "What do you want to do now?",
-      choice: ["Add an Engineer", "Add an Intern", "Done with my Team"],
-    }.then((userSelection) => {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "nextSteps",
+        message: "What do you want to do now?",
+        choices: ["Add an Engineer", "Add an Intern", "Done with my Team"],
+      },
+    ])
+    .then((userSelection) => {
       if (userSelection.nextSteps === "Add an Engineer") {
         return getEngineer();
       } else if (userSelection.nextSteps === "Add an Intern") {
@@ -90,23 +93,71 @@ const createTeam = () => {
       } else if (userSelection.nextSteps === "Done with my Team") {
         return endPrompts();
       }
-    }),
-  ]);
+    });
 };
 
 // Function to getEngineer data
 const getEngineer = () => {
   inquirer.prompt([
+    // Question #1 - Engineer #1 Name
     {
       type: "input",
       name: "engineer.name",
-      message: "What's the engineer's name?",
+      message: "Enter the engineer's name (Required):",
       validate: (nameInput) => {
         if (nameInput) {
           return true;
         } else {
           return false;
         }
+      },
+    },
+
+    // Question #2 - Engineer #1 ID
+    {
+      type: "input",
+      message: "Enter the engineer's Employee Id (Numbers ONLY!):",
+      name: "engineer.id",
+
+      // Validation
+      validate: (answer) => {
+        if (isNaN(answer) || !answer) {
+          return "Please enter a number - delete your entry with the backspace key and try again";
+        }
+        return true;
+      },
+    },
+    // Question #3 - Engineer #1 Email
+    {
+      type: "input",
+      name: "engineer.email",
+      message: "Enter the engineer's email (Required):",
+
+      // Validation
+      validate: (nameInput) => {
+        if (nameInput) {
+          return true;
+        } else {
+          console.log("Please enter the engineer's email address!");
+          return false;
+        }
+      },
+    },
+
+    // Question #4 - Engineer #1 GitHub
+    {
+      type: "input",
+      name: "engineer.github",
+      message: "Enter the engineer's GitHub username (Required):",
+
+      // Validation
+      validate: (nameInput) => {
+        if (nameInput) {
+          return true;
+        } else {
+          console.log("Please enter the engineer's GitHub username!");
+        }
+        return false;
       },
     },
   ]);
@@ -168,12 +219,16 @@ const getIntern = () => {
           return false;
         }
       },
-    }.then(createTeam()),
+    }.then(
+      console
+        .log("All done with your intern's data - returning to the main page.")
+        .then(createTeam())
+    ),
   ]);
 };
 
 // End prompt is called to generate the data in a file then transitions to template.js
-const endPrompts = () => {
+const endPrompt = () => {
   promptUser().then((data) => {
     console.log("Generating a file....");
     console.log("Done! Check index.html under the dist folder.");
@@ -181,4 +236,6 @@ const endPrompts = () => {
   });
 };
 
-promptUser();
+promptUser().then((answers) => {
+  createTeam();
+});
