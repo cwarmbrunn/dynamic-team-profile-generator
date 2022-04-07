@@ -87,11 +87,11 @@ const createTeam = () => {
     ])
     .then((userSelection) => {
       if (userSelection.nextSteps === "Add an Engineer") {
-        return getEngineer();
+        getEngineer();
       } else if (userSelection.nextSteps === "Add an Intern") {
-        return getIntern();
+        getIntern();
       } else if (userSelection.nextSteps === "Done with my Team") {
-        return endPrompts();
+        endPrompt();
       }
     });
 };
@@ -161,6 +161,8 @@ const getEngineer = () => {
       },
     },
   ]);
+
+  return createTeam();
 };
 
 // Function to getIntern data
@@ -236,6 +238,3 @@ const endPrompt = () => {
   });
 };
 
-promptUser().then((answers) => {
-  createTeam();
-});
