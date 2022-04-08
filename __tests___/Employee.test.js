@@ -10,7 +10,7 @@ describe("Employee Class", () => {
       role: "Employee",
     };
     const employee = new Employee(employeeResult);
-    expect(typeof employee).toBe("Object");
+    expect(typeof employee).toBe("object");
     expect(employee.name).toBe("Sara");
     expect(employee.id).toBe("12343");
     expect(employee.email).toBe("sara@hello.com");
