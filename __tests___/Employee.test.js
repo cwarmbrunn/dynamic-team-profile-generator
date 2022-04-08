@@ -11,6 +11,8 @@ describe("Employee Class", () => {
     };
     const employee = new Employee(employeeResult);
     expect(typeof employee).toBe("object");
+
+    // Can set name via constructor arguments 
     expect(employee.name).toBe("Sara");
     expect(employee.id).toBe("12343");
     expect(employee.email).toBe("sara@hello.com");
