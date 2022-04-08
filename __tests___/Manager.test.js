@@ -25,7 +25,7 @@ describe("Manager Class", () => {
   });
 
   // Test the manager's name
-  describe("Test the name for the manager - should be a string", () => {
+  describe("Manager Name", () => {
     test("Have a valid manager name", () => {
       const manager = new Manager(managerResult);
       expect(manager.name).toBe("Artemis");
@@ -33,7 +33,7 @@ describe("Manager Class", () => {
   });
 
   // Test the manager's employee ID
-  describe("Test the manager's employee ID - should be a number", () => {
+  describe("Manager Employee ID", () => {
     test("Have a valid employee ID", () => {
       const manager = new Manager(managerResult);
       expect(manager.id).toBe("43223");
@@ -41,7 +41,7 @@ describe("Manager Class", () => {
   });
 
   // Test the manager's email
-  describe("Test the manager's email - should be a string", () => {
+  describe("Manager Email", () => {
     test("Have a valid email", () => {
       const manager = new Manager(managerResult);
       expect(manager.email).toBe("artemis@hello.com");
@@ -49,7 +49,7 @@ describe("Manager Class", () => {
   });
 
   // Test the manager's role
-  describe("Test the manager's role - should be Manager", () => {
+  describe("Manager Role", () => {
     test("Have the role be Manager", () => {
       const manager = new Manager(managerResult);
       expect(manager.role).toBe("Manager");
@@ -57,8 +57,8 @@ describe("Manager Class", () => {
   });
 
   // Test the office Number
-  describe("Test the manager's office number - should be a number", () => {
-    test("Have the office number run", () => {
+  describe("Manager Office Number", () => {
+    test("Have a valid office number", () => {
       const manager = new Manager(managerResult);
       expect(manager.officeNumber).toBe("1001");
     });
