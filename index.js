@@ -1,8 +1,9 @@
 // This is where the application will run
 // Use the command "node index.js" to begin!
-// Set up a global variable for data
 
-let data = {
+// Set up a global variable for data
+// This will be where user input is stored and then called for generating the HTML
+const data = {
   // Manager Data - Name
   managerName: "",
 
@@ -15,13 +16,13 @@ let data = {
   // Manager Data - Office
   managerOffice: "",
 
-  // Team Data - Intern and Engineer Below
+  // Team Data - Intern and Engineer Data Below
   team: [
     {
-      // Intern Data Here
+      // Engineer Data Will Go Here
     },
     {
-      // Engineer Data Here
+      // Intern Data Will Go Here
     },
   ],
 };
@@ -47,7 +48,7 @@ const promptUser = () => {
       // Validation
       validate: (managerName) => {
         if (managerName) {
-          return true && data.push(managerName);
+          return true;
         } else {
           console.log("Please enter the manager's name!");
           return false;
@@ -93,7 +94,9 @@ const promptUser = () => {
       validate: (managerOffice) => {
         if (isNaN(managerOffice) || !managerOffice) {
           return "Please enter a number - delete your entry with the backspace key and try again";
-        } else return true;
+        } else {
+          return true;
+        }
       },
     },
   ]);
@@ -283,10 +286,18 @@ const getIntern = () => {
 const endPrompt = (answers) => {
   console.log("Generating a file....");
   console.log("Done! Check index.html under the dist folder.");
-  return writeFile(answers);
+  console.log(
+    "This is the team data for your HTML file",
+
+    answers
+  );
 };
 
 promptUser().then((answers) => {
-  console.log("promptUser.then", answers);
+  console.log("LINE 292 - promptUser().then", answers);
+  // const count = data.push(answers);
+  // console.log("CHECK LINE 295", count);
+  console.log(" LINE 297- DATA", data);
+
   createTeam();
 });
