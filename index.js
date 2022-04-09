@@ -3,29 +3,7 @@
 
 // Set up a global variable for data
 // This will be where user input is stored and then called for generating the HTML
-const data = {
-  // Manager Data - Name
-  managerName: "",
-
-  // Manager Data - ID
-  managerId: "",
-
-  // Manager Data - Email
-  managerEmail: "",
-
-  // Manager Data - Office
-  managerOffice: "",
-
-  // Team Data - Intern and Engineer Data Below
-  team: [
-    {
-      // Engineer Data Will Go Here
-    },
-    {
-      // Intern Data Will Go Here
-    },
-  ],
-};
+let data = [];
 // Set up Inquirer requirement
 const inquirer = require("inquirer");
 
@@ -198,7 +176,18 @@ const getEngineer = () => {
         console.log("You have added an engineer to your team.");
         console.log("You will be redirected to the menu.");
       })
-      .then((data) => {
+      .then((answers) => {
+        console.log(answers);
+        data.push({
+          // Question #1
+          EngineerQ1: "EngineerName",
+          EngineerName: answers.engineerName,
+          // Question #2
+          EngineerQ2: "EngineerId",
+          EngineerId: answers.engineerId,
+          // Question #3
+          
+        });
         createTeam();
       })
   );
@@ -291,13 +280,27 @@ const endPrompt = (answers) => {
 
     answers
   );
+
+  return writeFile(data);
 };
 
 promptUser().then((answers) => {
   console.log("LINE 292 - promptUser().then", answers);
-  // const count = data.push(answers);
-  // console.log("CHECK LINE 295", count);
-  console.log(" LINE 297- DATA", data);
+  data.push({
+    // Question #1
+    Question1: "managerName",
+    managerName: answers.managerName,
+    // Question #2
+    Question2: "managerId",
+    managerId: answers.managerId,
+    // Question #3
+    Question3: "managerEmail",
+    managerEmail: answers.managerEmail,
+    // Question #4
+    Question4: "managerOffice",
+    managerOffice: answers.managerOffice,
+  });
+  console.log(data);
 
   createTeam();
 });
