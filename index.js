@@ -177,17 +177,18 @@ const getEngineer = () => {
         console.log("You will be redirected to the menu.");
       })
       .then((answers) => {
-        console.log(answers);
-        data.push({
-          // Question #1
-          EngineerQ1: "EngineerName",
-          EngineerName: answers.engineerName,
-          // Question #2
-          EngineerQ2: "EngineerId",
-          EngineerId: answers.engineerId,
-          // Question #3
-          
-        });
+        console.log(data);
+        // data.push({
+        //   // Question #1
+        //   EngineerQ1: "EngineerName",
+        //   EngineerName: answers.engineerName,
+        //   // Question #2
+        //   EngineerQ2: "EngineerId",
+        //   EngineerId: answers.engineerId,
+        //   // Question #3
+        //   EngineerQ3: "EngineerEmail",
+        //   EngineerEmail: answers.EngineerEmail,
+        // });
         createTeam();
       })
   );
@@ -285,7 +286,7 @@ const endPrompt = (answers) => {
 };
 
 promptUser().then((answers) => {
-  console.log("LINE 292 - promptUser().then", answers);
+  console.log("LINE 288 - promptUser().then", answers);
   data.push({
     // Question #1
     Question1: "managerName",
@@ -300,7 +301,10 @@ promptUser().then((answers) => {
     Question4: "managerOffice",
     managerOffice: answers.managerOffice,
   });
+
   console.log(data);
+
+  console.log(answers.managerEmail);
 
   createTeam();
 });
