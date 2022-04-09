@@ -4,7 +4,7 @@
 // Set up Inquirer requirement
 const inquirer = require("inquirer");
 
-const { writeFile } = require("./src/template");
+const { writeFile } = require("./src/template.js");
 
 // Grants access to the file system functionality
 const fs = require("fs");
@@ -259,22 +259,11 @@ const getIntern = () => {
 
 // End prompt is called to generate the data in a file then transitions to template.js
 
+// Write File
 const endPrompt = (data) => {
-  // Write File
-
-  return new Promise((resolve, reject) => {
-    fs.writeFile("./dist/index.html", generateHTML(data), (err) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve({
-        ok: true,
-        message:
-          "Generating file...done! Check index.html under the dist folder",
-      });
-    });
-  });
+  console.log("Generating a file....");
+  console.log("Done! Check index.html under the dist folder.");
+  return writeFile(data);
 };
 
 promptUser().then((data) => {
