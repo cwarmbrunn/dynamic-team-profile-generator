@@ -100,7 +100,7 @@ const createTeam = () => {
     });
 };
 
-// Function to getEngineer data
+// Function to getEngine
 const getEngineer = () => {
   return (
     inquirer

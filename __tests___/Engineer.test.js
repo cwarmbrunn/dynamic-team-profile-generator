@@ -26,14 +26,14 @@ describe("Engineer Class", () => {
   });
 
   describe("Engineer GitHub", () => {
-    test("Have a valid GitHub", () => {
+    test("Can get GitHub username via getGithub()", () => {
       const engineer = new Engineer(engineerResult);
       expect(engineer.github).toBe("athena");
     });
   });
 
   describe("Engineer Role", () => {
-    test("Have Engineer Role", () => {
+    test('getRole() should return "Engineer"', () => {
       const engineer = new Engineer(engineerResult);
       expect(engineer.role).toBe("Engineer");
     });

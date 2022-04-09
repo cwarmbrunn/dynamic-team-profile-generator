@@ -24,7 +24,7 @@ describe("Intern Class", () => {
   });
 
   describe("Intern Role", () => {
-    test("Have an Intern role", () => {
+    test('getRole() should return "Intern"', () => {
       const intern = new Intern(internResult);
       expect(intern.role).toBe("Intern");
     });
@@ -32,7 +32,7 @@ describe("Intern Class", () => {
 
   // Test Intern's school
   describe("Intern's School", () => {
-    test("Have school listed", () => {
+    test("Can get school via getSchool()", () => {
       const intern = new Intern(internResult);
       expect(intern.school).toBe("Michigan State University");
     });

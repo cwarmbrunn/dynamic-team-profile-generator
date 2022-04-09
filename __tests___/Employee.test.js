@@ -37,6 +37,15 @@ describe("Employee Class", () => {
     });
   });
 
+  // Test the Employee's role
+
+  describe("Employee Role", () => {
+    test('getRole() should return "Employee"', () => {
+      const employee = new Employee(employeeResult);
+      expect(employee.role).toBe("Employee");
+    });
+  });
+
   // Test the Employee's email
   describe("Employee Email", () => {
     test("Can set email via constructor argument", () => {

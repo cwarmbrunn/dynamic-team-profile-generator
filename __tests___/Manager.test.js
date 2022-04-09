@@ -23,34 +23,9 @@ describe("Manager Class", () => {
     // Can get office number via getOffice()
     expect(manager.officeNumber).toBe("1001");
   });
-
-  // Test the manager's name
-  describe("Manager Name", () => {
-    test("Have a valid manager name", () => {
-      const manager = new Manager(managerResult);
-      expect(manager.name).toBe("Artemis");
-    });
-  });
-
-  // Test the manager's employee ID
-  describe("Manager Employee ID", () => {
-    test("Have a valid employee ID", () => {
-      const manager = new Manager(managerResult);
-      expect(manager.id).toBe("43223");
-    });
-  });
-
-  // Test the manager's email
-  describe("Manager Email", () => {
-    test("Have a valid email", () => {
-      const manager = new Manager(managerResult);
-      expect(manager.email).toBe("artemis@hello.com");
-    });
-  });
-
   // Test the manager's role
   describe("Manager Role", () => {
-    test("Have the role be Manager", () => {
+    test('getRole() should return "Manager"', () => {
       const manager = new Manager(managerResult);
       expect(manager.role).toBe("Manager");
     });
@@ -58,7 +33,7 @@ describe("Manager Class", () => {
 
   // Test the office Number
   describe("Manager Office Number", () => {
-    test("Have a valid office number", () => {
+    test("Can get office number via getOfficeNumber()", () => {
       const manager = new Manager(managerResult);
       expect(manager.officeNumber).toBe("1001");
     });
