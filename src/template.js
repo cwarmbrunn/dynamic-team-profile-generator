@@ -2,113 +2,28 @@
 const fs = require("fs");
 
 function generateHTML(data) {
-  //   // Else statement for if first engineer IS NOT selected
-  //   if (!data.engineer.name) {
-  //     var engineerSelection = "";
-  //   }
-
-  //   // If the first engineer is selected run the following
-  //   else if (data.engineer.name) {
-  //     var engineerSelection = `<div class="col-md-3">
-
-  //     <!-- CARD #2 - ENGINEER -->
+  //     <!-- CARD BEGIN-->
   //     <div class="card mt-4 px-3 d-flex shadow-lg">
   //         <div class="card-header bg-primary text-light">
-  //             <h3 class="employee-name"> ${data.engineer.name}</h3>
-  //             <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
+  //             <h3 class="employee-name"> ${this.name}</h3>
+  //             <h5 class="job-title"><i class="fa fa-desktop"></i> {this.role} </h5>
   //         </div>
   //         <div class="card-body shadow">
   //             <ul class="list-group list-group-flush shadow">
-  //                 <li class="list-group-item"><i class="fa fa-lock"></i> ID:${data.engineer.id} </li>
-  //                 <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:<a href="mailto:${data.engineer.email}"> ${data.engineer.email}</a> </li>
-  //                 <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a href="https://github.com/${data.engineer.github}" target="_blank"> ${data.engineer.github} </li>
+  //                 <li class="list-group-item"><i class="fa fa-lock"></i> ID: ID </li>
+  //                 <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:<a
+  //                         href="mailto:${data.email}"> EMAIL </a> </li>
+  //                 <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a
+  //                         href="https://github.com/${data.github}" target="_blank">
+  //                         DATA.GITHUB</a></li>
   //                 </li>
   //             </ul>
   //         </div>
   //     </div>
-  //   </div>
-  //   <!-- END CARD #2 - ENGINEER -->
-  //   </div>
-  //   `;
-  //   }
+  // </div>
 
-  //   // If the second engineer is selected run the following
-  //   if (data.engineer2) {
-  //     var engineer2Selection = `<div class="col-md-3">
-
-  //     <!-- CARD #3 - ENGINEER -->
-  //     <div class="card mt-4 px-3 d-flex shadow-lg">
-  //         <div class="card-header bg-primary text-light">
-  //             <h3 class="employee-name"> Alec</h3>
-  //             <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
-  //         </div>
-  //         <div class="card-body shadow">
-  //             <ul class="list-group list-group-flush shadow">
-  //                 <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
-  //                 <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
-  //                 <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: </li>
-  //                 <!--https://github.com/-->
-
-  //                 </li>
-  //             </ul>
-  //         </div>
-  //     </div>
-  //   </div>
-  //   <!-- END CARD #3 - ENGINEER -->
-  //   </div>`;
-
-  //     // If second engineer IS NOT selected
-  //   } else {
-  //     var engineer2Selection = ``;
-  //   }
-
-  //   // If third engineer is selected run the following
-  //   if (data.engineer3) {
-  //     var engineer3Selection = ` <div class="col-md-3">
-  //       <!-- CARD #4 - ENGINEER -->
-  //       <div class="card mt-4 px-3 shadow-lg">
-  //           <div class="card-header bg-primary text-light">
-  //               <h3 class="employee-name"> Tammer </h3>
-  //               <h5 class="job-title"><i class="fa fa-desktop"></i> Engineer </h5>
-  //           </div>
-  //           <div class="card-body">
-  //               <ul class="list-group list-group-flush shadow">
-  //                   <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
-  //                   <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
-  //                   <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: </li>
-  //               </ul>
-  //           </div>
-  //       </div>
-  //       <!-- END CARD #4 - ENGINEER -->
-  //   </div>`;
-  //     // If third engineer IS NOT selected
-  //   } else {
-  //     var engineer3Selection = ``;
-  //   }
-
-  //   // If intern is selected run the following
-  //   if (data.intern) {
-  //     var internSelection = ` <div class="col-md-3">
-  //       <!-- CARD #5 - INTERN -->
-  //       <div class="card col-md-12 mt-4 px-3 shadow-lg">
-  //           <div class="card-header bg-primary text-light">
-  //               <h3 class="employee-name"> John </h3>
-  //               <h5 class="job-title"><i class="fa fa-mortar-board"></i> Intern </h5>
-  //           </div>
-  //           <div class="card-body">
-  //               <ul class="list-group list-group-flush shadow">
-  //                   <li class="list-group-item"><i class="fa fa-lock"></i> ID: </li>
-  //                   <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: </li>
-  //                   <li class="list-group-item"> <i class="fa fa-apple"></i> School: </li>
-  //               </ul>
-  //           </div>
-  //       </div>
-  //       <!-- END CARD #5 - INTERN -->
-  //   </div>`;
-  //     // If intern is NOT selected
-  //   } else {
-  //     var internSelection = ``;
-  //   }
+  // </div>
+  // <!--  CARD END -->
 
   // HTML Template Begins
   return ` <!DOCTYPE html>
@@ -186,6 +101,7 @@ function generateHTML(data) {
 }
 // Write File
 const writeFile = (data) => {
+  console.log("Write File", data);
   return new Promise((resolve, reject) => {
     fs.writeFile("./dist/index.html", generateHTML(data), (err) => {
       if (err) {
@@ -199,9 +115,3 @@ const writeFile = (data) => {
 module.exports = {
   writeFile,
 };
-
-// ${engineer2Selection}
-
-// ${engineer3Selection}
-
-// ${internSelection}

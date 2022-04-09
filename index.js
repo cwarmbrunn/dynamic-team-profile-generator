@@ -1,6 +1,30 @@
 // This is where the application will run
 // Use the command "node index.js" to begin!
+// Set up a global variable for data
 
+let data = {
+  // Manager Data - Name
+  managerName: "",
+
+  // Manager Data - ID
+  managerId: "",
+
+  // Manager Data - Email
+  managerEmail: "",
+
+  // Manager Data - Office
+  managerOffice: "",
+
+  // Team Data - Intern and Engineer Below
+  team: [
+    {
+      // Intern Data Here
+    },
+    {
+      // Engineer Data Here
+    },
+  ],
+};
 // Set up Inquirer requirement
 const inquirer = require("inquirer");
 
@@ -13,70 +37,66 @@ const { create } = require("domain");
 
 // TODO: Create an array of questions for user input
 const promptUser = () => {
-  return inquirer
-    .prompt([
-      {
-        // Question #1 - Manager Name
-        type: "input",
-        name: "managerName",
-        message: "Enter the manager's name (Required):",
+  return inquirer.prompt([
+    {
+      // Question #1 - Manager Name
+      type: "input",
+      name: "managerName",
+      message: "Enter the manager's name (Required):",
 
-        // Validation
-        validate: (nameInput) => {
-          if (nameInput) {
-            return true;
-          } else {
-            console.log("Please enter the manager's name!");
-            return false;
-          }
-        },
+      // Validation
+      validate: (managerName) => {
+        if (managerName) {
+          return true && data.push(managerName);
+        } else {
+          console.log("Please enter the manager's name!");
+          return false;
+        }
       },
+    },
 
-      // Question #2 - Manager Employee ID
-      {
-        type: "input",
-        message: "Please enter the manager's Employee Id (Numbers ONLY!):",
-        name: "managerId",
-        validate: (answer) => {
-          if (isNaN(answer) || !answer) {
-            return "Please enter a number - delete your entry with the backspace key and try again";
-          }
+    // Question #2 - Manager Employee ID
+    {
+      type: "input",
+      message: "Please enter the manager's Employee Id (Numbers ONLY!):",
+      name: "managerId",
+      validate: (managerId) => {
+        if (isNaN(managerId) || !managerId) {
+          return "Please enter a number - delete your entry with the backspace key and try again";
+        }
+        return true;
+      },
+    },
+
+    // Question #3 - Manager Email Address
+    {
+      type: "input",
+      name: "managerEmail",
+      message: "Enter the manager's email address (Required):",
+
+      // Validation
+      validate: (managerEmail) => {
+        if (managerEmail) {
           return true;
-        },
+        } else {
+          console.log("Please enter the manager's email address!");
+          return false;
+        }
       },
+    },
 
-      // Question #3 - Manager Email Address
-      {
-        type: "input",
-        name: "managerEmail",
-        message: "Enter the manager's email address (Required):",
-
-        // Validation
-        validate: (nameInput) => {
-          if (nameInput) {
-            return true;
-          } else {
-            console.log("Please enter the manager's email address!");
-            return false;
-          }
-        },
+    // Question #4 - Manager Office Number
+    {
+      type: "input",
+      message: "Please enter the manager's office number (Numbers ONLY!):",
+      name: "managerOffice",
+      validate: (managerOffice) => {
+        if (isNaN(managerOffice) || !managerOffice) {
+          return "Please enter a number - delete your entry with the backspace key and try again";
+        } else return true;
       },
-
-      // Question #4 - Manager Office Number
-      {
-        type: "input",
-        message: "Please enter the manager's office number (Numbers ONLY!):",
-        name: "managerOffice",
-        validate: (answer) => {
-          if (isNaN(answer) || !answer) {
-            return "Please enter a number - delete your entry with the backspace key and try again";
-          } else return true;
-        },
-      },
-    ])
-    .then((answers) => {
-      console.log(answers);
-    });
+    },
+  ]);
 };
 
 const createTeam = () => {
@@ -95,7 +115,7 @@ const createTeam = () => {
       } else if (userSelection.nextSteps === "Add an Intern") {
         getIntern();
       } else if (userSelection.nextSteps === "Done with my Team") {
-        endPrompt();
+        endPrompt(data);
       }
     });
 };
@@ -260,12 +280,13 @@ const getIntern = () => {
 // End prompt is called to generate the data in a file then transitions to template.js
 
 // Write File
-const endPrompt = (data) => {
+const endPrompt = (answers) => {
   console.log("Generating a file....");
   console.log("Done! Check index.html under the dist folder.");
-  return writeFile(data);
+  return writeFile(answers);
 };
 
-promptUser().then((data) => {
+promptUser().then((answers) => {
+  console.log("promptUser.then", answers);
   createTeam();
 });
