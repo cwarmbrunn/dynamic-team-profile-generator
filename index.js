@@ -169,9 +169,14 @@ const getEngineer = () => {
         },
       ])
 
-      // Console log user answers
+      // Console log user answers and redirect to menu
       .then((answers) => {
         console.log(answers);
+        console.log("You have added an engineer to your team.");
+        console.log("You will be redirected to the menu.");
+      })
+      .then((data) => {
+        createTeam();
       })
   );
 };
@@ -238,18 +243,14 @@ const getIntern = () => {
             }
           },
         },
-        // .then(
-        //   console
-        //     .log("All done with your intern's data - returning to the main page.")
-        //     .then(createTeam())
-        // ),
       ])
-      // Console log user answers
+      // Console log user answers and redirect to menu
       .then((answers) => {
         console.log(answers);
+        console.log("You have added an intern to your team.");
+        console.log("You will be redirected to the menu.");
       })
-      .then(console.log("You have added an intern to your team!"))
-      .then("You will be redirected to the menu")
+
       .then((data) => {
         createTeam();
       })
@@ -259,9 +260,21 @@ const getIntern = () => {
 // End prompt is called to generate the data in a file then transitions to template.js
 
 const endPrompt = (data) => {
-  console.log("Generating a file....");
-  console.log("Done! Check index.html under the dist folder.");
-  return writeFile(data);
+  // Write File
+
+  return new Promise((resolve, reject) => {
+    fs.writeFile("./dist/index.html", generateHTML(data), (err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve({
+        ok: true,
+        message:
+          "Generating file...done! Check index.html under the dist folder",
+      });
+    });
+  });
 };
 
 promptUser().then((data) => {
