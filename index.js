@@ -25,8 +25,8 @@ const promptUser = () => {
       message: "Enter the manager's name (Required):",
 
       // Validation
-      validate: (managerName) => {
-        if (managerName) {
+      validate: (answer) => {
+        if (answer) {
           return true;
         } else {
           console.log("Please enter the manager's name!");
@@ -40,8 +40,8 @@ const promptUser = () => {
       type: "input",
       message: "Please enter the manager's Employee Id (Numbers ONLY!):",
       name: "managerId",
-      validate: (managerId) => {
-        if (isNaN(managerId) || !managerId) {
+      validate: (answer) => {
+        if (isNaN(answer) || !answer) {
           return "Please enter a number - delete your entry with the backspace key and try again";
         }
         return true;
@@ -55,8 +55,8 @@ const promptUser = () => {
       message: "Enter the manager's email address (Required):",
 
       // Validation
-      validate: (managerEmail) => {
-        if (managerEmail) {
+      validate: (answer) => {
+        if (answer) {
           return true;
         } else {
           console.log("Please enter the manager's email address!");
@@ -70,8 +70,8 @@ const promptUser = () => {
       type: "input",
       message: "Please enter the manager's office number (Numbers ONLY!):",
       name: "managerOffice",
-      validate: (managerOffice) => {
-        if (isNaN(managerOffice) || !managerOffice) {
+      validate: (answer) => {
+        if (isNaN(answer) || !answer) {
           return "Please enter a number - delete your entry with the backspace key and try again";
         } else {
           return true;
@@ -112,8 +112,8 @@ const getEngineer = () => {
           type: "input",
           name: "engineerName",
           message: "Enter the engineer's name (Required):",
-          validate: (nameInput) => {
-            if (nameInput) {
+          validate: (answer) => {
+            if (answer) {
               return true;
             } else {
               console.log("Please enter the engineer's name!");
@@ -143,8 +143,8 @@ const getEngineer = () => {
           message: "Enter the engineer's email (Required):",
 
           // Validation
-          validate: (nameInput) => {
-            if (nameInput) {
+          validate: (answer) => {
+            if (answer) {
               return true;
             } else {
               console.log("Please enter the engineer's email address!");
@@ -160,8 +160,8 @@ const getEngineer = () => {
           message: "Enter the engineer's GitHub username (Required):",
 
           // Validation
-          validate: (nameInput) => {
-            if (nameInput) {
+          validate: (answer) => {
+            if (answer) {
               return true;
             } else {
               console.log("Please enter the engineer's GitHub username!");
@@ -205,8 +205,8 @@ const getIntern = () => {
           type: "input",
           name: "internName",
           message: "What's the intern's name?",
-          validate: (nameInput) => {
-            if (nameInput) {
+          validate: (answer) => {
+            if (answer) {
               return true;
             } else {
               console.log("Please enter the intern's name!");
@@ -233,8 +233,8 @@ const getIntern = () => {
           type: "input",
           name: "internEmail",
           message: "What's the intern's email?",
-          validate: (nameInput) => {
-            if (nameInput) {
+          validate: (answer) => {
+            if (answer) {
               return true;
             } else {
               console.log("Please enter the intern's email!");
@@ -248,8 +248,8 @@ const getIntern = () => {
           type: "input",
           name: "internSchool",
           message: "What school does the intern attend?",
-          validate: (nameInput) => {
-            if (nameInput) {
+          validate: (answer) => {
+            if (answer) {
               return true;
             } else {
               console.log("Please enter the intern's school!");
@@ -283,7 +283,7 @@ const endPrompt = (answers) => {
     answers
   );
 
-  return writeFile(answers);
+  writeFile(answers);
 };
 
 promptUser().then((answers) => {

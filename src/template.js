@@ -2,24 +2,26 @@
 const fs = require("fs");
 
 function generateHTML(data) {
-  //     <!-- CARD BEGIN-->
-  //     <div class="card mt-4 px-3 d-flex shadow-lg">
-  //         <div class="card-header bg-primary text-light">
-  //             <h3 class="employee-name"> ${this.name}</h3>
-  //             <h5 class="job-title"><i class="fa fa-desktop"></i> {this.role} </h5>
-  //         </div>
-  //         <div class="card-body shadow">
-  //             <ul class="list-group list-group-flush shadow">
-  //                 <li class="list-group-item"><i class="fa fa-lock"></i> ID: ID </li>
-  //                 <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:<a
-  //                         href="mailto:${data.email}"> EMAIL </a> </li>
-  //                 <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a
-  //                         href="https://github.com/${data.github}" target="_blank">
-  //                         DATA.GITHUB</a></li>
-  //                 </li>
-  //             </ul>
-  //         </div>
-  //     </div>
+  // Template Card - To Loop
+
+  //   <!-- CARD BEGIN-->
+  //   <div class="card mt-4 px-3 d-flex shadow-lg">
+  //       <div class="card-header bg-primary text-light">
+  //           <h3 class="employee-name"> ${this.name}</h3>
+  //           <h5 class="job-title"><i class="fa fa-desktop"></i> {this.role} </h5>
+  //       </div>
+  //       <div class="card-body shadow">
+  //           <ul class="list-group list-group-flush shadow">
+  //               <li class="list-group-item"><i class="fa fa-lock"></i> ID: ID </li>
+  //               <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:<a
+  //                       href="mailto:${data.email}"> EMAIL </a> </li>
+  //               <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a
+  //                       href="https://github.com/${data.github}" target="_blank">
+  //                       DATA.GITHUB</a></li>
+  //               </li>
+  //           </ul>
+  //       </div>
+  //   </div>
   // </div>
 
   // </div>
@@ -67,7 +69,7 @@ function generateHTML(data) {
                             <h3 class="employee-name"> ${data.managerName}</h3>
                             <h5 class="job-title"><i class="fa fa-coffee"></i> Manager </h5>
                         </div>
-                        <div class="card-body shadow">
+                        <div class="card-body">
                             <ul class="list-group list-group-flush shadow ">
                                 <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data.managerId}</li>
                                 <li class="list-group-item"><i class="fa fa-envelope-o"></i> Email: <a href="mailto:${data.managerEmail}">${data.managerEmail}</a>
@@ -81,6 +83,8 @@ function generateHTML(data) {
                     </div>
                 </div>
         
+
+                
                
                 <!-- END CARD DECK -->
             </div>
@@ -101,7 +105,7 @@ function generateHTML(data) {
 }
 // Write File
 const writeFile = (data) => {
-  console.log("Write File", data);
+  console.log("TEMPLATE.JS - Write File", data);
   return new Promise((resolve, reject) => {
     fs.writeFile("./dist/index.html", generateHTML(data), (err) => {
       if (err) {
