@@ -75,7 +75,7 @@ function generateHTML(data) {
                                 <li class="list-group-item"><i class="fa fa-envelope-o"></i> Email: <a href="mailto:${data.managerEmail}">${data.managerEmail}</a>
     
                                 </li>
-                                <li class="list-group-item"><i class="fa fa-map-marker"></i> Office Number: ${data.managerOffice}</li>
+                                <li class="list-group-item"><i class="fa fa-map-marker"></i> Office Number: ${data.officeNumber}</li>
                             </ul>
                         </div>
     

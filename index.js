@@ -183,13 +183,22 @@ const getEngineer = () => {
       ])
 
       // Console log user answers and redirect to menu
-      .then((data) => {
-        console.log(data);
+      .then((answers) => {
+        console.log(answers);
+
+        const engineer = new Engineer({
+          name: answers.engineerName,
+          id: answers.engineerId,
+          email: engineerEmail,
+          github: engineerGithub,
+        });
+        data.push(engineer);
+
         console.log("You have added an engineer to your team.");
         console.log("You will be redirected to the menu.");
       })
-      .then((data) => {
-        console.log(data);
+      .then((answers) => {
+        console.log(answers);
         createTeam();
       })
   );
@@ -259,13 +268,22 @@ const getIntern = () => {
         },
       ])
       // Console log user answers and redirect to menu
-      .then((data) => {
-        console.log(data);
+      .then((answers) => {
+        console.log(answers);
+
+        const intern = new Intern({
+          name: answers.internName,
+          id: answers.internId,
+          email: answers.internEmail,
+          school: answers.internSchool,
+        });
+        data.push(intern);
         console.log("You have added an intern to your team.");
         console.log("You will be redirected to the menu.");
       })
 
-      .then((data) => {
+      .then((answers) => {
+        console.log(answers);
         createTeam();
       })
   );
@@ -288,21 +306,13 @@ const endPrompt = (answers) => {
 
 promptUser().then((answers) => {
   console.log("LINE 288 - promptUser().then", answers);
-  const manager = new Manager(
-    answers.managerName,
-    answers.managerId,
-    answers.managerEmail,
-    answers.managerOffice
-  );
+  const manager = new Manager({
+    name: answers.managerName,
+    id: answers.managerId,
+    email: answers.managerEmail,
+    officeNumber: answers.managerOffice,
+  });
   data.push(manager);
-
-  // const engineer = new Engineer(
-  //   answers.engineerName,
-  //   answers.engineerId,
-  //   answers.engineerEmail,
-  //   answers.engineerGithub
-  // );
-  // data.push(engineer);
 
   // const intern = new Intern(
   //   answers.internName,
@@ -313,6 +323,8 @@ promptUser().then((answers) => {
   // data.push(intern);
 
   console.log("What is data now?", data);
+  // console.log(" TEST #1", data.Manager.id);
+  console.log("TEST #2", data.manager.id);
 
   createTeam();
 });
