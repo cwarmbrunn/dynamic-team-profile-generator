@@ -3,7 +3,7 @@
 
 // Set up a global variable for data
 // This will be where user input is stored and then called for generating the HTML
-let data = [];
+let data;
 // Set up Inquirer requirement
 const inquirer = require("inquirer");
 
@@ -13,6 +13,7 @@ const { writeFile } = require("./src/template.js");
 const fs = require("fs");
 const { number } = require("yargs");
 const { create } = require("domain");
+const { takeCoverage } = require("v8");
 
 // TODO: Create an array of questions for user input
 const promptUser = () => {
@@ -282,29 +283,20 @@ const endPrompt = (answers) => {
     answers
   );
 
-  return writeFile(data);
+  return writeFile(answers);
 };
 
 promptUser().then((answers) => {
   console.log("LINE 288 - promptUser().then", answers);
-  data.push({
-    // Question #1
-    Question1: "managerName",
+
+  data = {
     managerName: answers.managerName,
-    // Question #2
-    Question2: "managerId",
     managerId: answers.managerId,
-    // Question #3
-    Question3: "managerEmail",
     managerEmail: answers.managerEmail,
-    // Question #4
-    Question4: "managerOffice",
     managerOffice: answers.managerOffice,
-  });
 
-  console.log(data);
-
-  console.log(answers.managerEmail);
+    team: [],
+  };
 
   createTeam();
 });
