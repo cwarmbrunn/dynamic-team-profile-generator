@@ -3,11 +3,22 @@
 
 // Set up a global variable for data
 // This will be where user input is stored and then called for generating the HTML
-let data;
+let data = [];
+
 // Set up Inquirer requirement
 const inquirer = require("inquirer");
 
+// Set up writeFile requirement
 const { writeFile } = require("./src/template.js");
+
+// Set up Manager requirement
+const Manager = require("./lib/Manager");
+
+// Set up Engineer requirement
+const Engineer = require("./lib/Engineer");
+
+// Set up Intern requirement
+const Intern = require("./lib/Intern");
 
 // Grants access to the file system functionality
 const fs = require("fs");
@@ -93,9 +104,9 @@ const createTeam = () => {
     ])
     .then((userSelection) => {
       if (userSelection.nextSteps === "Add an Engineer") {
-        getEngineer();
+        getEngineer(data);
       } else if (userSelection.nextSteps === "Add an Intern") {
-        getIntern();
+        getIntern(data);
       } else if (userSelection.nextSteps === "Done with my Team") {
         endPrompt(data);
       }
@@ -172,24 +183,13 @@ const getEngineer = () => {
       ])
 
       // Console log user answers and redirect to menu
-      .then((answers) => {
-        console.log(answers);
+      .then((data) => {
+        console.log(data);
         console.log("You have added an engineer to your team.");
         console.log("You will be redirected to the menu.");
       })
-      .then((answers) => {
+      .then((data) => {
         console.log(data);
-        // data.push({
-        //   // Question #1
-        //   EngineerQ1: "EngineerName",
-        //   EngineerName: answers.engineerName,
-        //   // Question #2
-        //   EngineerQ2: "EngineerId",
-        //   EngineerId: answers.engineerId,
-        //   // Question #3
-        //   EngineerQ3: "EngineerEmail",
-        //   EngineerEmail: answers.EngineerEmail,
-        // });
         createTeam();
       })
   );
@@ -259,8 +259,8 @@ const getIntern = () => {
         },
       ])
       // Console log user answers and redirect to menu
-      .then((answers) => {
-        console.log(answers);
+      .then((data) => {
+        console.log(data);
         console.log("You have added an intern to your team.");
         console.log("You will be redirected to the menu.");
       })
@@ -283,20 +283,36 @@ const endPrompt = (answers) => {
     answers
   );
 
-  writeFile(answers);
+  return writeFile(answers);
 };
 
 promptUser().then((answers) => {
   console.log("LINE 288 - promptUser().then", answers);
+  const manager = new Manager(
+    answers.managerName,
+    answers.managerId,
+    answers.managerEmail,
+    answers.managerOffice
+  );
+  data.push(manager);
 
-  data = {
-    managerName: answers.managerName,
-    managerId: answers.managerId,
-    managerEmail: answers.managerEmail,
-    managerOffice: answers.managerOffice,
+  // const engineer = new Engineer(
+  //   answers.engineerName,
+  //   answers.engineerId,
+  //   answers.engineerEmail,
+  //   answers.engineerGithub
+  // );
+  // data.push(engineer);
 
-    team: [],
-  };
+  // const intern = new Intern(
+  //   answers.internName,
+  //   answers.internId,
+  //   answers.internEmail,
+  //   answers.internSchool
+  // );
+  // data.push(intern);
+
+  console.log("What is data now?", data);
 
   createTeam();
 });
