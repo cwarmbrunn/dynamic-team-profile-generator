@@ -3,30 +3,52 @@ const fs = require("fs");
 
 function generateHTML(data) {
   // Template Card - To Loop
+  // Set i = 1 - we are getting the manager information from the zero index in the data array
+  for (let i = 1; i < data.length; i++)
 
-  //   <!-- CARD BEGIN-->
-  //   <div class="card mt-4 px-3 d-flex shadow-lg">
-  //       <div class="card-header bg-primary text-light">
-  //           <h3 class="employee-name"> ${this.name}</h3>
-  //           <h5 class="job-title"><i class="fa fa-desktop"></i> {this.role} </h5>
-  //       </div>
-  //       <div class="card-body shadow">
-  //           <ul class="list-group list-group-flush shadow">
-  //               <li class="list-group-item"><i class="fa fa-lock"></i> ID: ID </li>
-  //               <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:<a
-  //                       href="mailto:${data.email}"> EMAIL </a> </li>
-  //               <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a
-  //                       href="https://github.com/${data.github}" target="_blank">
-  //                       DATA.GITHUB</a></li>
-  //               </li>
-  //           </ul>
-  //       </div>
-  //   </div>
-  // </div>
+    // If data role is equal to Intern - return the following
+    if (data[i].role === "Intern") {
+      var internData = `
+      <!-- CARD #${data[i]} - INTERN -->
+      <div class="col-md-3">
+      <!-- CARD #${data[i]} - INTERN -->
+      <div class="card col-md-12 mt-4 px-3 shadow-lg">
+          <div class="card-header bg-primary text-light">
+              <h3 class="employee-name"> ${data[i].name} </h3>
+              <h5 class="job-title"><i class="fa fa-mortar-board"></i> ${data[i].role}</h5>
+          </div>
+          <div class="card-body">
+              <ul class="list-group list-group-flush shadow">
+                  <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data[i].id} </li>
+                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:${data[i].email} </li>
+                  <li class="list-group-item"> <i class="fa fa-apple"></i> School: ${data[i].school}</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <!-- END CARD #${data[i]} - INTERN -->`;
 
-  // </div>
-  // <!--  CARD END -->
-
+      // Else if the role is Engineer
+    } else if (data[i].role === "Engineer") {
+      return `
+      <!-- CARD #${data[i]} - ENGINEER -->
+      <div class="col-md-3">
+      <div class="card mt-4 px-3 shadow-lg">
+          <div class="card-header bg-primary text-light">
+              <h3 class="employee-name"> ${data[i].name} </h3>
+              <h5 class="job-title"><i class="fa fa-desktop"></i> ${data[i].role} </h5>
+          </div>
+          <div class="card-body">
+              <ul class="list-group list-group-flush shadow">
+                  <li class="list-group-item"><i class="fa fa-lock"></i> ID:${data[i].id} </li>
+                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: ${data[i].email} </li>
+                  <li class="list-group-item"> <i class="fa fa-github"></i> GitHub:${data[i].github} </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <!-- END CARD #${data[i]} - ENGINEER -->`;
+    }
   // HTML Template Begins
   return ` <!DOCTYPE html>
     <html lang="en">
@@ -66,16 +88,16 @@ function generateHTML(data) {
                     <!-- CARD #1 - MANAGER -->
                     <div class="card mt-4 px-3 d-flex shadow-lg">
                         <div class="card-header bg-primary text-light">
-                            <h3 class="employee-name"> ${data.managerName}</h3>
-                            <h5 class="job-title"><i class="fa fa-coffee"></i> Manager </h5>
+                            <h3 class="employee-name"> ${data[0].name}</h3>
+                            <h5 class="job-title"><i class="fa fa-coffee"></i> ${data[0].role}</h5>
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush shadow ">
-                                <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data.managerId}</li>
-                                <li class="list-group-item"><i class="fa fa-envelope-o"></i> Email: <a href="mailto:${data.managerEmail}">${data.managerEmail}</a>
+                                <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data[0].id}</li>
+                                <li class="list-group-item"><i class="fa fa-envelope-o"></i> Email: <a href="mailto:${data[0].email}">${data[0].email}</a>
     
                                 </li>
-                                <li class="list-group-item"><i class="fa fa-map-marker"></i> Office Number: ${data.officeNumber}</li>
+                                <li class="list-group-item"><i class="fa fa-map-marker"></i> Office Number: ${data[0].officeNumber}</li>
                             </ul>
                         </div>
     
@@ -83,7 +105,7 @@ function generateHTML(data) {
                     </div>
                 </div>
         
-
+// DATA FOR CARDS NEEDS TO GO HERE 
                 
                
                 <!-- END CARD DECK -->
@@ -106,6 +128,8 @@ function generateHTML(data) {
 // Write File
 const writeFile = (data) => {
   console.log("TEMPLATE.JS - Write File", data);
+
+  console.log("data bracket test", data[0].name);
   return new Promise((resolve, reject) => {
     fs.writeFile("./dist/index.html", generateHTML(data), (err) => {
       if (err) {

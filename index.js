@@ -283,7 +283,6 @@ const getIntern = () => {
       })
 
       .then((answers) => {
-        console.log(answers);
         createTeam();
       })
   );
@@ -314,17 +313,7 @@ promptUser().then((answers) => {
   });
   data.push(manager);
 
-  // const intern = new Intern(
-  //   answers.internName,
-  //   answers.internId,
-  //   answers.internEmail,
-  //   answers.internSchool
-  // );
-  // data.push(intern);
-
   console.log("What is data now?", data);
-  // console.log(" TEST #1", data.Manager.id);
-  console.log("TEST #2", data.manager.id);
 
   createTeam();
 });
