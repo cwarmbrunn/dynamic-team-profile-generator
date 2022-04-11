@@ -2,11 +2,11 @@
 const fs = require("fs");
 
 function generateHTML(data) {
-  // Template Card - To Loop
+  // Setting team variable empty
+  var team = ``;
+
   // Set i = 1 - we are getting the manager information from the zero index in the data array
-  for (i = 1; i < data.length; i++) {
-    // Setting team variable empty
-    var team = ``;
+  for (let i = 1; i < data.length; i++) {
     // If data role is equal to Intern - return the following
     if (data[i].role === "Intern") {
       team += `
@@ -42,8 +42,8 @@ function generateHTML(data) {
           <div class="card-body">
               <ul class="list-group list-group-flush shadow">
                   <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data[i].id} </li>
-                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> <a href="mailto: ${data[i].email}">${data[i].email}</a></li>
-                  <li class="list-group-item"> <i class="fa fa-github"></i>GitHub: <a href="https://github.com/${data[i].github}" target="_blank">http${data[i].github}</a> </li>
+                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: <a href="mailto: ${data[i].email}">${data[i].email}</a></li>
+                  <li class="list-group-item"> <i class="fa fa-github"></i> GitHub: <a href="https://github.com/${data[i].github}" target="_blank">${data[i].github}</a> </li>
               </ul>
           </div>
       </div>
