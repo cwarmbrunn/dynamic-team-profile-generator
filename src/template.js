@@ -4,13 +4,14 @@ const fs = require("fs");
 function generateHTML(data) {
   // Template Card - To Loop
   // Set i = 1 - we are getting the manager information from the zero index in the data array
-  for (let i = 1; i < data.length; i++)
+  for (i = 1; i < data.length; i++) {
+    // Setting team variable empty
+    var team = ``;
     // If data role is equal to Intern - return the following
     if (data[i].role === "Intern") {
-      var internData = `
-      <!-- CARD #${data[i]} - INTERN -->
+      team += `
+      <!-- START CARD - INTERN -->
       <div class="col-md-3">
-      <!-- CARD #${data[i]} - INTERN -->
       <div class="card col-md-12 mt-4 px-3 shadow-lg">
           <div class="card-header bg-primary text-light">
               <h3 class="employee-name"> ${data[i].name} </h3>
@@ -19,18 +20,19 @@ function generateHTML(data) {
           <div class="card-body">
               <ul class="list-group list-group-flush shadow">
                   <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data[i].id} </li>
-                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email:${data[i].email} </li>
+                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: <a href="mailto:${data[i].email}">${data[i].email}</a> </li>
                   <li class="list-group-item"> <i class="fa fa-apple"></i> School: ${data[i].school}</li>
               </ul>
           </div>
       </div>
   </div>
-  <!-- END CARD #${data[i]} - INTERN -->`;
+  <!-- END CARD- INTERN -->`;
 
       // Else if the role is Engineer
-    } else if (data[i].role === "Engineer") {
-      var engineerData = `
-      <!-- CARD #${data[i]} - ENGINEER -->
+    }
+    if (data[i].role === "Engineer") {
+      team += `
+      <!-- START CARD - ENGINEER -->
       <div class="col-md-3">
       <div class="card mt-4 px-3 shadow-lg">
           <div class="card-header bg-primary text-light">
@@ -39,15 +41,16 @@ function generateHTML(data) {
           </div>
           <div class="card-body">
               <ul class="list-group list-group-flush shadow">
-                  <li class="list-group-item"><i class="fa fa-lock"></i> ID:${data[i].id} </li>
-                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> Email: ${data[i].email} </li>
-                  <li class="list-group-item"> <i class="fa fa-github"></i> GitHub:${data[i].github} </li>
+                  <li class="list-group-item"><i class="fa fa-lock"></i> ID: ${data[i].id} </li>
+                  <li class="list-group-item"> <i class="fa fa-envelope-o"></i> <a href="mailto: ${data[i].email}">${data[i].email}</a></li>
+                  <li class="list-group-item"> <i class="fa fa-github"></i>GitHub: <a href="https://github.com/${data[i].github}" target="_blank">http${data[i].github}</a> </li>
               </ul>
           </div>
       </div>
   </div>
-  <!-- END CARD #${data[i]} - ENGINEER -->`;
+  <!-- END CARD - ENGINEER -->`;
     }
+  }
   // HTML Template Begins
   return ` <!DOCTYPE html>
     <html lang="en">
@@ -103,9 +106,9 @@ function generateHTML(data) {
                         <!-- END CARD #1 - MANAGER -->
                     </div>
                 </div>
-        
-// DATA FOR CARDS NEEDS TO GO HERE 
-                
+
+         <!-- DYNAMIC DATA WILL LOAD HERE -->
+                    ${team}
                
                 <!-- END CARD DECK -->
             </div>

@@ -198,7 +198,6 @@ const getEngineer = () => {
         console.log("You will be redirected to the menu.");
       })
       .then((answers) => {
-        console.log(answers);
         createTeam();
       })
   );
@@ -304,7 +303,6 @@ const endPrompt = (answers) => {
 };
 
 promptUser().then((answers) => {
-  console.log("LINE 288 - promptUser().then", answers);
   const manager = new Manager({
     name: answers.managerName,
     id: answers.managerId,
