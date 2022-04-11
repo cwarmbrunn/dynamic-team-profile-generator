@@ -5,7 +5,6 @@ function generateHTML(data) {
   // Template Card - To Loop
   // Set i = 1 - we are getting the manager information from the zero index in the data array
   for (let i = 1; i < data.length; i++)
-
     // If data role is equal to Intern - return the following
     if (data[i].role === "Intern") {
       var internData = `
@@ -30,7 +29,7 @@ function generateHTML(data) {
 
       // Else if the role is Engineer
     } else if (data[i].role === "Engineer") {
-      return `
+      var engineerData = `
       <!-- CARD #${data[i]} - ENGINEER -->
       <div class="col-md-3">
       <div class="card mt-4 px-3 shadow-lg">
@@ -128,8 +127,6 @@ function generateHTML(data) {
 // Write File
 const writeFile = (data) => {
   console.log("TEMPLATE.JS - Write File", data);
-
-  console.log("data bracket test", data[0].name);
   return new Promise((resolve, reject) => {
     fs.writeFile("./dist/index.html", generateHTML(data), (err) => {
       if (err) {

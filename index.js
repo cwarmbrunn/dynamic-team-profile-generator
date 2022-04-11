@@ -189,8 +189,8 @@ const getEngineer = () => {
         const engineer = new Engineer({
           name: answers.engineerName,
           id: answers.engineerId,
-          email: engineerEmail,
-          github: engineerGithub,
+          email: answers.engineerEmail,
+          github: answers.engineerGithub,
         });
         data.push(engineer);
 
