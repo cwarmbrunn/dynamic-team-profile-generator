@@ -6,7 +6,7 @@ Dynamic Team Profile Generator
 
 **Project Description/Summary:**
 
-Creating a Node.js command-line application that dynamically generates an HTML site after receiving user input via the terminal about individual employees. Leveraging Jest to run unit tests and Inqurirer to collect input from the user. 
+Creating a Node.js command-line application that dynamically generates an HTML site after receiving user input via the terminal about individual employees. Leveraging Jest to run unit tests and Inquirer to collect input from the user.
 
 ---
 
@@ -19,6 +19,9 @@ As this is a site built with Node.js inputs - there is no live site. Please see 
 **Technology Used:**
 
 - JavaScript
+- HTMl
+- Bootstrap
+- CSS
 - Jest
 - Inquirer
 - Node.js
@@ -32,6 +35,6 @@ In order to install this application, you will need Node.js on your local comput
 ---
 
 **Screenshot and Video Link:**
-![]()
+![Screenshot of the Team Profile Generator with generated site information](./assets/team-profile-screenshot.jpg)
 
-[]()
+Check out the video of the Team Profile Generator in action [here](https://watch.screencastify.com/v/bvVa4dV5DNng90wI22kL)

@@ -129,7 +129,6 @@ function generateHTML(data) {
 }
 // Write File
 const writeFile = (data) => {
-  console.log("TEMPLATE.JS - Write File", data);
   return new Promise((resolve, reject) => {
     fs.writeFile("./dist/index.html", generateHTML(data), (err) => {
       if (err) {
